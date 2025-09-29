@@ -1,28 +1,41 @@
 import type React from "react";
 
-export type Locale = 'en' | 'ar';
-export interface User{
+export type Locale = "en" | "ar";
+export interface User {
   name: string;
 }
+
+export type TaskStatus = "done" | "pending" | "missed" | "canceled";
+export type TaskPriority = "high" | "medium" | "low";
+export interface assignedPeriod {
+ start: string; 
+  end: string;   
+}
+
 export interface Task {
-  id: number | string;
+  id: string | number;
   title: string;
+  status: TaskStatus;
+  priority: TaskPriority;
+  duration: string;
   description?: string;
+  assignedPeriod?: assignedPeriod;
   deadline?: string;
-  completed: boolean;
   parentId?: string;
+  completed: boolean;
 }
 
 export interface Goal {
   id: number;
   title: string;
-  progress: number;
+  progress?: number;
+  description?: string;
 }
 
 export interface ChatMessage {
-  from: 'user' | 'ai';
+  from: "user" | "ai";
   text: string;
-  type?: 'typing';
+  type?: "typing";
 }
 
 export interface ProgressSummary {
@@ -31,12 +44,12 @@ export interface ProgressSummary {
   missed: number;
 }
 
-export  interface HeatmapDay {
+export interface HeatmapDay {
   date: string;
   count: number;
 }
 
-export  interface AppData {
+export interface AppData {
   user: { name: string };
   todaySchedule: Task[];
   goals: Goal[];
@@ -53,7 +66,7 @@ export interface AppState {
 }
 
 export interface NavItem {
-    label: string;
-    href: string;
-    icon: React.JSX.Element;
+  label: string;
+  href: string;
+  icon: React.JSX.Element;
 }

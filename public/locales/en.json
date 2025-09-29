@@ -5,8 +5,20 @@
   "TODAY_SCHEDULE": "Today's Schedule",
   "GOALS_OVERVIEW": "Goals Overview",
   "CURRENTLY_WORKING": "Currently Working On",
-  "MINI_CALENDAR": "Mini Calendar",
-  "SEPTEMBER": "September 2025",
+  "MINI_CALENDAR": "Calendar",
+  "JANUARY": "January",
+  "FEBRUARY": "February",
+  "MARCH": "March",
+  "APRIL": "April",
+  "MAY": "May",
+  "JUNE": "June",
+  "JULY": "July",
+  "AUGUST": "August",
+  "SEPTEMBER": "September",
+  "OCTOBER": "October",
+  "NOVEMBER": "November",
+  "DECEMBER": "December",
+
   "CALENDAR": "Calendar",
   "WEEK_OF": "Week of Sep 28 - Oct 4, 2025",
   "TASKS_FOR": "Tasks for Monday, Sep 29",
@@ -40,5 +52,6 @@
   "WEDNESDAY_SHORT": "We",
   "THURSDAY_SHORT": "Th",
   "FRIDAY_SHORT": "Fr",
-  "SATURDAY_SHORT": "Sa"
+  "SATURDAY_SHORT": "Sa",
+  "ViewAll": "View all"
 }

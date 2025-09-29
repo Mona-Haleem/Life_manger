@@ -5,6 +5,7 @@ import { useEffect, type ReactNode } from "react";
 import type { Locale } from "@/util/type";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "@/context/ThemeContext";
+import { DefaultCard } from "@/components/Cards/defaultCard";
 
 const SettingsScreen = () => {
   const { theme, toggleTheme } = useTheme();
@@ -52,7 +53,7 @@ const SettingsScreen = () => {
         <p className="text-gray-500 dark:text-gray-400">{t("MANAGE_PREFS")}</p>
       </header>
 
-      <Card>
+      <DefaultCard>
         <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
           {t("PREFERENCES")}
         </h2>
@@ -75,9 +76,9 @@ const SettingsScreen = () => {
             <option value="ar">العربية</option>
           </select>
         </SettingRow>
-      </Card>
+      </DefaultCard>
 
-      <Card>
+      <DefaultCard>
         <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
           {t("NOTIFICATIONS")}
         </h2>
@@ -94,7 +95,7 @@ const SettingsScreen = () => {
             <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] rtl:after:left-auto rtl:after:right-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-teal-500"></div>
           </label>
         </SettingRow>
-      </Card>
+      </DefaultCard>
     </div>
   );
 };

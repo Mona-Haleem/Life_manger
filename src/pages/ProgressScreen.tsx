@@ -7,6 +7,7 @@ import { Card } from "../components/ui/card";
 import type { RootState } from "@/store";
 import { useTranslation } from "react-i18next";
 import type { HeatmapDay } from "@/util/type";
+import { DefaultCard } from "@/components/Cards/defaultCard";
 
 // import {
 //   BarChart,
@@ -119,7 +120,7 @@ const ProgressScreen = () => {
         <p className="text-gray-500 dark:text-gray-400">{t('INSIGHTS')}</p>
       </header>
 
-      <Card className="bg-teal-500 text-white shadow-lg">
+      <DefaultCard className="bg-teal-500 text-white shadow-lg">
         <div className="flex flex-col sm:flex-row justify-around items-center text-center">
           <div className="p-2">
             <p className="text-3xl font-bold">
@@ -140,24 +141,24 @@ const ProgressScreen = () => {
             <p className="opacity-90 font-medium">{t('MISSED_DEADLINES')}</p>
           </div>
         </div>
-      </Card>
+      </DefaultCard>
 
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
         <div className="lg:col-span-3">
-          <Card>
+          <DefaultCard>
             <h2 className="font-bold text-lg mb-4 text-gray-800 dark:text-gray-200">{t('DONE_VS_SKIPPED')}</h2>
             <BarChart />
-          </Card>
+          </DefaultCard>
         </div>
         <div className="lg:col-span-2">
-          <Card>
+          <DefaultCard>
             <h2 className="font-bold text-lg mb-4 text-gray-800 dark:text-gray-200">{t('ACTIVITY_HEATMAP')}</h2>
             <Heatmap heatmapData={heatmap} />
-          </Card>
+          </DefaultCard>
         </div>
       </div>
 
-      <Card>
+      <DefaultCard>
         <div className="flex items-start gap-3">
           <div className="w-8 h-8 rounded-full bg-teal-500 text-white flex items-center justify-center flex-shrink-0 mt-1 text-lg">🤓</div>
           <div>
@@ -169,7 +170,7 @@ const ProgressScreen = () => {
             </div>
           </div>
         </div>
-      </Card>
+      </DefaultCard>
     </div>
   );
 };

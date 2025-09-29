@@ -26,7 +26,7 @@ export default function Layout() {
       <BottomNav navItems={navItems} />
 
       {/* Main Content */}
-      <main className="flex-1 overflow-y-auto p-4 w-full bg-">
+      <main className="flex-1 overflow-hidden p-4 w-full bg-">
         <Outlet />
       </main>
     </div>

@@ -1,9 +1,9 @@
-import type { RootState } from "@/util/type";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "../components/ui/button";
 import { addChatMessage, setChatTyping } from "@/store/slices/chatSlice";
+import type { RootState } from "@/store";
 
 const ChatScreen = () => {
   const { chatHistory:messages } = useSelector((state: RootState) => state.chat);
