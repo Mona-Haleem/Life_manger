@@ -35,7 +35,7 @@ export interface ITaskDTO {
 
 export interface IChatMessage {
   id: ID;
-  userId: ID;
+  userId?: ID;
   role: 'user' | 'assistant' | 'system';
   content: string;
   created_at?: string;

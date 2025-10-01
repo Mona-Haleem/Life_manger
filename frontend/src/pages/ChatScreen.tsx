@@ -1,8 +1,9 @@
-
 import { useTranslation } from "react-i18next";
-import {  useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import type { RootState } from "@/store";
 import { ChatInput } from "@/components/Chat/ChatInput.js";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 const ChatScreen = () => {
   const { chatHistory: messages } = useSelector(
@@ -10,8 +11,6 @@ const ChatScreen = () => {
   );
   const { t, i18n } = useTranslation();
   const direction = i18n.dir() as "ltr" | "rtl";
-
-  
 
   return (
     <div className="flex flex-col h-full p-0">
@@ -54,9 +53,9 @@ const ChatScreen = () => {
               </div>
             ) : (
               <div
-                className={`max-w-xs md:max-w-md lg:max-w-lg p-3 rounded-2xl ${
+                className={`prose max-w-xs md:max-w-md lg:max-w-lg p-3 rounded-2xl prose-p:my-1 prose-pre:p-2 prose-pre:bg-gray-900 prose-pre:text-white overflow-x-auto ${
                   msg.role === "user"
-                    ? "bg-purple-500 text-white"
+                    ? "bg-purple-500 text-white prose-invert"
                     : "bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200"
                 } ${
                   msg.role === "user"
@@ -68,7 +67,9 @@ const ChatScreen = () => {
                     : "rounded-bl-lg"
                 }`}
               >
-                <p>{msg.content}</p>
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                  {msg.content}
+                </ReactMarkdown>
               </div>
             )}
           </div>
@@ -80,4 +81,5 @@ const ChatScreen = () => {
     </div>
   );
 };
+
 export default ChatScreen;

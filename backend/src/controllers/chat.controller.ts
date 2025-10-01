@@ -21,10 +21,7 @@ export class ChatController {
     try {
       const userId = req.params.userId;
       const { history:messages } = req.body;
-      // save user message
-      // const userMessage = await this.chatRepo.create({ userId, role: 'user', content });
-      // AI reply
-      const reply = await this.aiService.generateAssistantReply(messages, userId);
+      const reply = await this.aiService.processUserMessage(messages)//, userId);
       //await this.chatRepo.create(reply);
       return res.json(success({ reply }));
     } catch (err) {

@@ -98,3 +98,19 @@ export function format(date: Date, pattern: string): string {
     .replace(/\bd\b/g, String(date.getDate())); // plain day without leading 0
 }
 
+export function formatDate(dateString?: string) {
+  if (!dateString) return "";
+  return new Date(dateString).toLocaleDateString(undefined, {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+}
+
+export function formatTime(dateString?: string) {
+  if (!dateString) return "";
+  return new Date(dateString).toLocaleTimeString(undefined, {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+}
