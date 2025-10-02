@@ -37,7 +37,7 @@ import { routes } from "./routes/index.js";
 // import { AnalyticsController } from './controllers/analytics.controller.js';import { supabase } from './utils/supabaseClient.js';
 
 // // Load environment variables
-console.log('Environment Variables:', config??'No config loaded');
+console.log("Environment Variables:", config ?? "No config loaded");
 //dotenv.config();
 
 // // Instantiate repositories
@@ -73,7 +73,15 @@ const PORT = config.port || 3000;
 
 // // Middleware
 app.use(cors());
-app.use(express.json());
+
+app.use(
+  express.json({
+    limit: "10mb",
+
+    type: (req) =>
+      req.headers["content-type"]?.includes("application/json") ?? false,
+  })
+);
 // //app.use(express.urlencoded({ extended: true }))
 app.use(requestLogger);
 

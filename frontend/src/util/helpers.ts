@@ -1,4 +1,4 @@
-import type { Task } from "./type"
+import type { AttachedFile, Task } from "./type"
 
 export function filterTasksByDate(
   tasks: Task[],
@@ -114,3 +114,43 @@ export function formatTime(dateString?: string) {
     minute: "2-digit",
   });
 }
+
+export function attachedFileToFile(attached: AttachedFile): File {
+  if (attached.type === "file" && !attached.data.startsWith("data:")) {
+    // it's plain text (like .txt)
+    const blob = new Blob([attached.data], { type: attached.mimeType });
+    return new File([blob], attached.name, { type: attached.mimeType });
+  }
+
+  // otherwise it's base64 (image/pdf/etc)
+  const byteString = atob(attached.data.split(",").pop() || attached.data);
+  const ab = new ArrayBuffer(byteString.length);
+  const ia = new Uint8Array(ab);
+  for (let i = 0; i < byteString.length; i++) {
+    ia[i] = byteString.charCodeAt(i);
+  }
+  const blob = new Blob([ab], { type: attached.mimeType });
+  return new File([blob], attached.name, { type: attached.mimeType });
+}
+export async function fileToBase64(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const base64 = (reader.result as string).split(",")[1];
+      resolve(base64);
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+export function base64ToBlob(base64: string, mimeType: string): Blob {
+  const binary = atob(base64);
+  const bytes = new Uint8Array(binary.length);
+  for (let i = 0; i < binary.length; i++) {
+    bytes[i] = binary.charCodeAt(i);
+  }
+  return new Blob([bytes], { type: mimeType });
+}
+
+

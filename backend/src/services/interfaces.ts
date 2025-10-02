@@ -33,10 +33,43 @@ export interface ITaskDTO {
   created_at?: string;
 }
 
+
 export interface IChatMessage {
-  id: ID;
-  userId?: ID;
-  role: 'user' | 'assistant' | 'system';
+  id?: string;
+  role: "user" | "assistant" | "system";
   content: string;
   created_at?: string;
+  type?: "typing" | "message";
+  
+  // Multi-modal properties
+  imageUrl?: string;
+  audioUrl?: string;
+  fileUrl?: string;
+  fileName?: string;
+  fileType?: string;
+}
+
+export interface ChatMessage {
+  from?: "user" | "ai";
+  text?: string;
+  role?: "user" | "assistant" | "system";
+  content?: string;
+  type?: "typing" | "message";
+  timestamp?: Date;
+  
+  // Multi-modal properties
+  imageUrl?: string;
+  audioUrl?: string;
+  fileUrl?: string;
+  fileName?: string;
+  fileType?: string;
+}
+
+export interface UploadedFile {
+  fieldname: string;
+  originalname: string;
+  encoding: string;
+  mimetype: string;
+  buffer: Buffer;
+  size: number;
 }
